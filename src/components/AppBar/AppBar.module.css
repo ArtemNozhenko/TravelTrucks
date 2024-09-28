@@ -1,0 +1,16 @@
+.header {
+  border-bottom: 1px solid var(--badges);
+  padding: 24px 64px;
+  max-width: 1440px;
+  height: 72px;
+  background: var(--inputs);
+  display: flex;
+}
+
+.logo {
+  margin-right: 450px;
+  width: 136px;
+  height: 15px;
+  max-width: none;
+  height: auto;
+}
