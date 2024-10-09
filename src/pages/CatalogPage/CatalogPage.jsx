@@ -1,5 +1,12 @@
+import { FilterForm } from '../../components/FilterForm/FilterForm';
+import css from './CatalogPage.module.css';
+
 const CatalogPage = () => {
-  return <h2>hello catalog</h2>;
+  return (
+    <main className={css.main}>
+      <FilterForm />
+    </main>
+  );
 };
 
 export default CatalogPage;
