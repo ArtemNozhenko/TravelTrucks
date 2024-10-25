@@ -1,5 +1,5 @@
 .home {
-  background-image: url(../../image/fon.jpg);
+  background-image: url(../../images/fon.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -12,7 +12,7 @@
 
 @media screen and (min-resolution: 192dpi) {
   .home {
-    background-image: url(../../image/fon@x2.jpg);
+    background-image: url(../../images/fon@x2.jpg);
   }
 }
 

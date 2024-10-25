@@ -1,6 +1,6 @@
 import { Formik, Field, Form } from 'formik';
 import { useId, useState } from 'react';
-import icons from '../../image/icons.svg';
+import icons from '../../images/icons.svg';
 import css from './FilterForm.module.css';
 
 export const FilterForm = () => {
@@ -158,7 +158,7 @@ export const FilterForm = () => {
                   <Field
                     type="radio"
                     name="type"
-                    value="fully integrated"
+                    value="fullyIntegrated"
                     className={css.radioInput}
                   />
                   <span className={css.radioMark}>
