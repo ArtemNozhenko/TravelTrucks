@@ -2,22 +2,48 @@ import { Formik, Field, Form } from 'formik';
 import { useId, useState } from 'react';
 import icons from '../../images/icons.svg';
 import css from './FilterForm.module.css';
+import { useDispatch } from 'react-redux';
+import { fetchCampers } from '../../redux/operations';
+import { resetCampers } from '../../redux/campersSlice';
+import { setFilterData } from '../../redux/filterSlice';
 
 export const FilterForm = () => {
   const [isFilled, setIsFilled] = useState(false);
-  // const dispatch = useDispatch();
-  // const [initialValues, setInitialValues] = useState({
-  //   location: '',
-  //   equipment: '',
-  //   type: '',
-  // });
+  const dispatch = useDispatch();
 
   const handleInputChange = e => {
     setIsFilled(e.target.value !== '');
   };
 
+  const resultFilters = values => {
+    const { location, form, equipment } = values;
+
+    const params = {};
+
+    if (location !== '') {
+      params.location = location;
+    }
+
+    if (form !== '') {
+      params.form = form;
+    }
+
+    equipment.forEach(i => {
+      if (i === 'automatic') {
+        params.transmission = 'automatic';
+      } else {
+        params[i] = true;
+      }
+    });
+
+    return params;
+  };
+
   const handleSubmit = values => {
-    console.log(values);
+    const filterData = resultFilters(values);
+    dispatch(resetCampers());
+    dispatch(setFilterData(filterData));
+    dispatch(fetchCampers({ ...filterData, page: 1 }));
   };
 
   const locationId = useId();
@@ -29,10 +55,10 @@ export const FilterForm = () => {
       <Formik
         initialValues={{
           location: '',
-          equipment: {},
-          type: '',
+          equipment: [],
+          form: '',
         }}
-        onSubmit={(values, actions) => handleSubmit(values, actions)}
+        onSubmit={handleSubmit}
       >
         <Form>
           <label className={css.label}>
@@ -44,7 +70,7 @@ export const FilterForm = () => {
                 type="text"
                 placeholder="City"
                 className={`${css.labelInput} ${isFilled ? css.filled : ''}`}
-                onInput={handleInputChange} //
+                onInput={handleInputChange}
               />
 
               <svg
@@ -81,7 +107,7 @@ export const FilterForm = () => {
                   <Field
                     type="checkbox"
                     name="equipment"
-                    value="Automatic"
+                    value="automatic"
                     className={css.radioInput}
                   />
                   <span className={css.radioMark}>
@@ -95,7 +121,7 @@ export const FilterForm = () => {
                   <Field
                     type="checkbox"
                     name="equipment"
-                    value="Kitchen"
+                    value="kitchen"
                     className={css.radioInput}
                   />
                   <span className={css.radioMark}>
@@ -123,7 +149,7 @@ export const FilterForm = () => {
                   <Field
                     type="checkbox"
                     name="equipment"
-                    value="Bathroom"
+                    value="bathroom"
                     className={css.radioInput}
                   />
                   <span className={css.radioMark}>
@@ -142,8 +168,8 @@ export const FilterForm = () => {
                 <label className={css.radioLabel}>
                   <Field
                     type="radio"
-                    name="type"
-                    value="van"
+                    name="form"
+                    value="panelTruck"
                     className={css.radioInput}
                   />
 
@@ -157,7 +183,7 @@ export const FilterForm = () => {
                 <label className={css.radioLabel}>
                   <Field
                     type="radio"
-                    name="type"
+                    name="form"
                     value="fullyIntegrated"
                     className={css.radioInput}
                   />
@@ -171,7 +197,7 @@ export const FilterForm = () => {
                 <label className={css.radioLabel}>
                   <Field
                     type="radio"
-                    name="type"
+                    name="form"
                     value="alcove"
                     className={css.radioInput}
                   />

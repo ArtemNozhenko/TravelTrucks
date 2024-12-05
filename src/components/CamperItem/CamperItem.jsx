@@ -19,6 +19,7 @@ export const CamperItem = ({ data }) => {
               <FaEuroSign size="18" />
               {formattedPrice}
             </p>
+
             <svg className={css.svg}>
               <use href={`${icons}#icon-heart`}></use>
             </svg>
@@ -43,14 +44,14 @@ export const CamperItem = ({ data }) => {
         <div className={css.badgesContainer}>
           {data.transmission === 'automatic' ? (
             <p className={css.badges}>
-              <svg className={css.svgStar}>
+              <svg className={css.svgBadges}>
                 <use href={`${icons}#icon-automatic`}></use>
               </svg>
               Automatic
             </p>
           ) : data.transmission === 'manual' ? (
             <p className={css.badges}>
-              <svg className={css.svgStar}>
+              <svg className={css.svgBadges}>
                 <use href={`${icons}#icon-automatic`}></use>
               </svg>
               Manual
@@ -58,14 +59,14 @@ export const CamperItem = ({ data }) => {
           ) : null}
           {data.engine === 'diesel' ? (
             <p className={css.badges}>
-              <svg className={css.svgStar}>
+              <svg className={css.svgBadges}>
                 <use href={`${icons}#icon-fuel-pump`}></use>
               </svg>
               Diesel
             </p>
           ) : data.engine === 'petrol' ? (
             <p className={css.badges}>
-              <svg className={css.svgStar}>
+              <svg className={css.svgBadges}>
                 <use href={`${icons}#icon-fuel-pump`}></use>
               </svg>
               Petrol
@@ -74,7 +75,7 @@ export const CamperItem = ({ data }) => {
 
           {data.bathroom && (
             <p className={css.badges}>
-              <svg className={css.svgStar}>
+              <svg className={css.svgBadges}>
                 <use href={`${icons}#icon-bathroom`}></use>
               </svg>
               Bathroom
@@ -82,7 +83,7 @@ export const CamperItem = ({ data }) => {
           )}
           {data.kitchen && (
             <p className={css.badges}>
-              <svg className={css.svgStar}>
+              <svg className={css.svgBadges}>
                 <use href={`${icons}#icon-kitchen`}></use>
               </svg>
               Kitchen
@@ -90,7 +91,7 @@ export const CamperItem = ({ data }) => {
           )}
           {data.TV && (
             <p className={css.badges}>
-              <svg className={css.svgStar}>
+              <svg className={css.svgBadges}>
                 <use href={`${icons}#icon-tv`}></use>
               </svg>
               TV
@@ -98,7 +99,7 @@ export const CamperItem = ({ data }) => {
           )}
           {data.radio && (
             <p className={css.badges}>
-              <svg className={css.svgStar}>
+              <svg className={css.svgBadges}>
                 <use href={`${icons}#icon-radio`}></use>
               </svg>
               Radio
@@ -106,7 +107,7 @@ export const CamperItem = ({ data }) => {
           )}
           {data.AC && (
             <p className={css.badges}>
-              <svg className={css.svgStar}>
+              <svg className={css.svgBadges}>
                 <use href={`${icons}#icon-ac`}></use>
               </svg>
               AC

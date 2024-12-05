@@ -1,6 +1,14 @@
 .main {
-  margin: 48px 64px;
+  padding: 48px 64px;
   display: flex;
   flex-direction: row;
   gap: 64px;
+  max-width: 1440px;
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }

@@ -1,0 +1,11 @@
+.btn {
+  color: var(--main);
+  border: 1px solid var(--gray-light);
+  background: none;
+  padding: 16px 32px;
+}
+
+.btn:hover {
+  border: 1px solid var(--button);
+  background: none;
+}

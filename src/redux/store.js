@@ -10,11 +10,13 @@ import { configureStore } from '@reduxjs/toolkit';
 //   REGISTER,
 // } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
-import campersSlice from './slice';
+import campersSlice from './campersSlice';
+import filterSlice from './filterSlice';
 
 export const store = configureStore({
   reducer: {
     campers: campersSlice,
+    filters: filterSlice,
   },
   //     ,
   //   middleware: getDefaultMiddleware =>
