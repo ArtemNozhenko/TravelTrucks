@@ -1,9 +1,26 @@
 import css from './CamperItem.module.css';
 import { FaEuroSign } from 'react-icons/fa';
 import icons from '../../images/icons.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleFavorite } from '../../redux/favoritesSlice';
+import { selectFavorites } from '../../redux/selectors';
+import clsx from 'clsx';
+import { useMemo } from 'react';
 
 export const CamperItem = ({ data }) => {
   const formattedPrice = data.price.toFixed(2);
+
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+
+  const isFavorite = useMemo(
+    () => favorites.includes(data.id),
+    [favorites, data.id]
+  );
+
+  const handleClick = () => {
+    dispatch(toggleFavorite(data.id));
+  };
 
   return (
     <div className={css.itemContainer}>
@@ -19,10 +36,14 @@ export const CamperItem = ({ data }) => {
               <FaEuroSign size="18" />
               {formattedPrice}
             </p>
-
-            <svg className={css.svg}>
-              <use href={`${icons}#icon-heart`}></use>
-            </svg>
+            <button
+              className={clsx(css.heartBtn, isFavorite && css.favorite)}
+              onClick={handleClick}
+            >
+              <svg className={css.svg}>
+                <use href={`${icons}#icon-heart`}></use>
+              </svg>
+            </button>
           </div>
         </div>
         <div className={css.details}>

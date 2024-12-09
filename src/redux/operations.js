@@ -7,7 +7,7 @@ export const fetchCampers = createAsyncThunk(
   'campers/fetchCampers',
   async ({ page = 1, ...query }, thunkAPI) => {
     try {
-      console.log('page:', page, 'query:', query);
+      // console.log('page:', page, 'query:', query);
       const response = await axios.get('/campers', {
         params: { ...query, page, limit: 4 },
       });

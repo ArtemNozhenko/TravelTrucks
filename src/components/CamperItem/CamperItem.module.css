@@ -45,9 +45,22 @@
   gap: 12px;
 }
 
+.heartBtn {
+  padding: 0;
+  background: none;
+}
+
+.heartBtn:hover {
+  background: none;
+}
+
 .svg {
   width: 26px;
   height: 24px;
+}
+
+.heartBtn.favorite .svg {
+  fill: var(--button);
 }
 
 .details {
