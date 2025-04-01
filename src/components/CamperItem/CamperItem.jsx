@@ -1,6 +1,7 @@
 import css from './CamperItem.module.css';
 import { FaEuroSign } from 'react-icons/fa';
 import icons from '../../images/icons.svg';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavorite } from '../../redux/favoritesSlice';
 import { selectFavorites } from '../../redux/selectors';
@@ -25,7 +26,7 @@ export const CamperItem = ({ data }) => {
   return (
     <div className={css.itemContainer}>
       <div className={css.imgContainer}>
-        <img src={data.gallery[0].original} alt="photo" />
+        <img src={data.gallery[0].thumb} alt="photo" />
       </div>
       <div className={css.descriptionContainer}>
         <div className={css.titleContainer}>
@@ -135,7 +136,9 @@ export const CamperItem = ({ data }) => {
             </p>
           )}
         </div>
-        <button className={css.btn}>Show more</button>
+        <NavLink className={css.btn} to={`/campers/${data.id}`}>
+          Show more
+        </NavLink>
       </div>
     </div>
   );

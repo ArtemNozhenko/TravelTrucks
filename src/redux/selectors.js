@@ -1,4 +1,5 @@
 export const selectCampers = state => state.campers.items;
+export const selectOneCamper = state => state.campers.item;
 export const selectFilters = state => state.filters.filters;
 export const selectLoading = state => state.campers.loading;
 export const selectError = state => state.campers.error;
